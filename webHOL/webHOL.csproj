@@ -76,6 +76,7 @@
     <None Include="Properties\PublishProfiles\cf-todo.pubxml" />
     <None Include="Properties\PublishProfiles\cf-todoapp.pubxml" />
     <None Include="Properties\PublishProfiles\donnam-multichannel-webapp.pubxml" />
+    <None Include="Properties\PublishProfiles\webhol-code.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Web.config" />

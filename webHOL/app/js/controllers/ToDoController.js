@@ -13,7 +13,7 @@ multiChannelToDoApp
         };
 
         $scope.add = function () {
-            toDoService.add($scope.itemCount, $scope.itemText, $scope.itemPhone)
+            toDoService.add($scope.itemText, $scope.itemPhone)
             .success(function(data){
                 $scope.itemText = '';
                 $scope.itemPhone = '';

@@ -8,12 +8,12 @@ multiChannelToDoApp
                 return $http.get(apiPath + '/TodoItem');
             },
 
-            add: function (id, task) {
-                return $http.post(apiPath + '/TodoItem', { "id": id + 1, "text": task, "complete": false });
+            add: function (id, task, phoneNumber) {
+                return $http.post(apiPath + '/TodoItem', { "text": task, "phoneNumber":  phoneNumber, "complete": false });
             },
 
             complete: function (item) {
-                return $http.patch(apiPath + '/TodoItem/' + item.Id, { "id": item.Id, "text": item.Text, "complete": true });
+                return $http.patch(apiPath + '/TodoItem/' + item.id, { "id": item.id, "text": item.text, "complete": true });
             }
         }
     }]);

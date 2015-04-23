@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mobileHOL", "mobileHOL", "{F6C0526E-9FE6-4B07-B340-243315E431F1}"
 EndProject
@@ -23,7 +23,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appserviceholapi", "appserv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webHOL", "webHOL\webHOL.csproj", "{42BAD27A-43D5-4E96-AAF4-0DDB65C30C65}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1AFA5BFD-59D2-4165-A514-8FC4215E6C3F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		mobileHOL\mobileHOL.Shared\mobileHOL.Shared.projitems*{bd50eca0-7f46-41e1-a407-56821f327b5b}*SharedItemsImports = 4
+		mobileHOL\mobileHOL.Shared\mobileHOL.Shared.projitems*{1bba7382-395f-44d1-9431-813384eab491}*SharedItemsImports = 13
+		mobileHOL\mobileHOL.Shared\mobileHOL.Shared.projitems*{c8fca4e8-5e5b-4b79-95a9-a74383823fec}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -119,10 +131,5 @@ Global
 		{C8FCA4E8-5E5B-4B79-95A9-A74383823FEC} = {F6C0526E-9FE6-4B07-B340-243315E431F1}
 		{1BBA7382-395F-44D1-9431-813384EAB491} = {F6C0526E-9FE6-4B07-B340-243315E431F1}
 		{BD50ECA0-7F46-41E1-A407-56821F327B5B} = {F6C0526E-9FE6-4B07-B340-243315E431F1}
-	EndGlobalSection
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		mobileHOL\mobileHOL.Shared\mobileHOL.Shared.projitems*{bd50eca0-7f46-41e1-a407-56821f327b5b}*SharedItemsImports = 4
-		mobileHOL\mobileHOL.Shared\mobileHOL.Shared.projitems*{1bba7382-395f-44d1-9431-813384eab491}*SharedItemsImports = 13
-		mobileHOL\mobileHOL.Shared\mobileHOL.Shared.projitems*{c8fca4e8-5e5b-4b79-95a9-a74383823fec}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

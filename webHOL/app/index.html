@@ -15,7 +15,7 @@
         <div class="check-list-container">
             <div class="check-list-item-container">
                 <ul class="check-list">
-                    <li id="check-list-item-{{item.id}}" ng-repeat="item in items" ng-hide="{{item.complete}}" ng-click="complete(item)" class="check-list-item"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> {{item.text}}</li>
+                    <li id="check-list-item-{{item.id}}" ng-repeat="item in items" ng-hide="{{item.complete}}" ng-click="complete(item)" class="check-list-item"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> {{item.text}} - {{item.phoneNumber}}</li>
                 </ul>
             </div>
         </div>
@@ -23,7 +23,9 @@
         <div class="controls-container">
             <form ng-submit="add()" class="form-inline">
                 <div class="form-group">
-                    <input id="Text" ng-model="itemText" type="text" class="form-control" placeholder="Task" /><button class="btn btn-primary">Add Item</button>
+                    <input id="Text" ng-model="itemText" type="text" class="form-control" placeholder="Task" />
+                    <input id="PhoneNumber" ng-model="itemPhone" type="tel" class="form-control" placeholder="Phone Number" />
+                    <button class="btn btn-primary">Add Item</button>
                 </div>
             </form>
         </div>

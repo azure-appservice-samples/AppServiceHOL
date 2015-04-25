@@ -1,79 +1,71 @@
 ﻿using appserviceholapi.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
+using System.Web.Http;
 
 namespace appserviceholapi.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        protected readonly string _connectionString;
 
-        // GET api/values/5
-        public string GetById(int id)
+        public ValuesController()
         {
-            return "value";
+            _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-            
-        }
-
-     
+        [HttpGet]
+        // GET api/values/
         public IEnumerable<TodoItem> GetUnProcessedItems()
         {
             List<TodoItem> values;
 
-            values = new List<TodoItem>();
-
-            using (SqlConnection conn = new SqlConnection("Server=tcp:holsql.database.windows.net,1433;Database=holsqlDB;User ID=yochay@holsql;Password=!QAZ2wsx;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                SqlCommand q1 = new SqlCommand
-                    ("SELECT [Id] ,[Text],[Complete],[PhoneNumber],[Processed] FROM [mobileHOL].[TodoItems] where [Processed]= 0 and Complete=1", conn);
-
-                conn.Open();
-                foreach (var item in q1.ExecuteReader())
+                using (SqlCommand selectCommand = new SqlCommand("SELECT [Id] ,[Text],[Complete],[PhoneNumber],[Processed] FROM [mobileHOL].[TodoItems] WHERE [Processed]=0 AND Complete=1", conn))
                 {
-                    
-                    values.Add(
-                        new TodoItem
-                        {
-                            Id = (string)((DbDataRecord)item)["Id"],
-                            Text = (string)((DbDataRecord)item)["Text"],
-                            PhoneNumber = (string)((DbDataRecord)item)["PhoneNumber"],
-                            Complete = (bool)((DbDataRecord)item)["Complete"],
-                            Processed = (bool)((DbDataRecord)item)["Processed"]
-                        }
+                    conn.Open();
+                    values = new List<TodoItem>();
+                    foreach (DbDataRecord item in selectCommand.ExecuteReader())
+                    {
+                        values.Add(
+                            new TodoItem
+                            {
+                                Id = item["Id"].ToString(),
+                                Text = item["Text"].ToString(),
+                                PhoneNumber = item["PhoneNumber"].ToString(),
+                                Complete = Convert.ToBoolean(item["Complete"]),
+                                Processed = Convert.ToBoolean(item["Processed"])
+                            }
                         );
+                    }
                 }
             }
-            
 
             return values;
         }
-        
 
+        [HttpPatch]
+        // PATCH api/values/{id}
+        public void PatchUnProcessedItem(string id)
+        {
+            using(SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand updateCommand = new SqlCommand("UPDATE [mobileHOL].[TodoItems] SET [Processed]=1 WHERE [Id]=@id", conn))
+                {
+                    conn.Open();
+
+                    // Assign user provided value to @id
+                    updateCommand.Parameters.Add("@id", SqlDbType.NVarChar, 128);
+                    updateCommand.Parameters["@id"].Value = id;
+
+                    updateCommand.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

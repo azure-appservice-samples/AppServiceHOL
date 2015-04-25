@@ -1,5 +1,4 @@
 ﻿'use strict';
-var apiPath = "http://mobilehol-code.azurewebsites.net/tables";
 multiChannelToDoApp
     .factory('toDoService', ['$http', function ($http) {
         return {

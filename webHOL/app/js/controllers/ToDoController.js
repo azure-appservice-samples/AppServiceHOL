@@ -2,12 +2,9 @@
 multiChannelToDoApp
     .controller('ToDoController', ['$scope', 'toDoService', function ($scope, toDoService) {
 
-        $scope.itemCount = 0;
-
         $scope.get = function () {
             toDoService.getItems()
                 .success(function (data) {
-                    $scope.itemCount = data.length;
                     $scope.items = data;
             });
         };

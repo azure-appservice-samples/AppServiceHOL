@@ -1,16 +1,16 @@
-﻿using System.Linq;
+﻿using Microsoft.Azure.Mobile.Security;
+using Microsoft.Azure.Mobile.Server;
+using mobileHOLService.DataObjects;
+using mobileHOLService.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.OData;
-using Microsoft.Azure.Mobile.Server;
-using mobileHOLService.DataObjects;
-using mobileHOLService.Models;
-using Microsoft.Azure.Mobile.Security;
 
 namespace mobileHOLService.Controllers
 {
-     [AuthorizeLevel(AuthorizationLevel.Anonymous)]
+    [AuthorizeLevel(AuthorizationLevel.Anonymous)]
     public class TodoItemController : TableController<TodoItem>
     {
         protected override void Initialize(HttpControllerContext controllerContext)

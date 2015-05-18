@@ -15,7 +15,7 @@
         <div class="check-list-container">
             <div class="check-list-item-container">
                 <ul class="check-list">
-                    <li id="check-list-item-{{item.id}}" ng-repeat="item in items" ng-hide="{{item.complete}}" ng-click="complete(item)" class="check-list-item"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> {{item.text}} - {{item.phoneNumber}}</li>
+                    <li id="check-list-item-{{item.id}}" ng-repeat="item in items" ng-hide="{{item.complete}}" ng-click="complete(item)" class="check-list-item"><span class="glyphicon glyphicon-check" aria-hidden="true"></span><span class="task">{{item.text}}</span> <a class="tel" tabindex="-1" href="tel:{{item.phoneNumber}}">{{item.phoneNumber}}</a></li>
                 </ul>
             </div>
         </div>

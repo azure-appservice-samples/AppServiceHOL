@@ -1,5 +1,5 @@
 ﻿.container {
-    width: 300px;
+    width: 450px;
     margin: auto;
     margin-top: 60px;
     padding: 10px;
@@ -10,14 +10,12 @@ ul.check-list {
 }
 
 div.check-list-container {
-    width: 300px;
     min-height: 200px;
     text-align: right;
 }
 
 li.check-list-item {
     height: 40px;
-    width: 225px;
     padding-bottom: 2px;
     list-style-type: none;
     text-align: left;
@@ -29,4 +27,27 @@ li.check-list-item {
 
 div.controls-container {
     text-align: right;
+}
+
+    div.controls-container input[type=text] {
+        width: 175px;
+    }
+
+    div.controls-container input[type=tel] {
+        width: 125px;
+    }
+
+.tel {
+    color: #2b2a2a;
+    text-decoration:none;
+    padding-left: 10px;
+}
+
+span.task {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /** IE6+, Firefox 7+, Opera 11+, Chrome, Safari **/
+    -o-text-overflow: ellipsis; /** Opera 9 & 10 **/
+    width: 150px; /* note that this width will have to be smaller to see the effect */
 }
